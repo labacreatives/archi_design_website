@@ -195,6 +195,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
   border: 0;
   padding: 0; }
 
+
 textarea {
   overflow: auto;
   vertical-align: top; }
@@ -264,8 +265,8 @@ form input[type="submit"], form button, form input[type="reset"] {
 /*
  * Reusable Components Style
  */
-.button, form input[type="submit"], form button, form input[type="reset"] {
-  border: 2px solid #f4c545;
+.button, form input[type="submit"], form button, form input[type="reset"], .button-slice-edge {
+  border: 2px solid #b3b3b3;
   background: none;
   padding: 10px 20px;
   position: relative;
@@ -273,7 +274,7 @@ form input[type="submit"], form button, form input[type="reset"] {
   display: inline-block;
   -webkit-transition: .3s ease;
           transition: .3s ease; }
-  .button:before, form input[type="submit"]:before, form button:before, form input[type="reset"]:before, .button:after, form input[type="submit"]:after, form button:after, form input[type="reset"]:after {
+  .button:before, form input[type="submit"]:before, form button:before, form input[type="reset"]:before, .button-slice-edge:before, .button:after, form input[type="submit"]:after, form button:after, form input[type="reset"]:after .button-slice-edge:after {
     content: " ";
     width: 20px;
     height: 20px;
@@ -281,19 +282,19 @@ form input[type="submit"], form button, form input[type="reset"] {
     background: #212121;
     -webkit-transition: .3s ease;
             transition: .3s ease; }
-  .button:hover, form input[type="submit"]:hover, form button:hover, form input[type="reset"]:hover {
+  .button:hover, form input[type="submit"]:hover, form button:hover, form input[type="reset"]:hover .button-slice-edge:hover {
     border-color: white;
     color: white; }
     .button:hover:before, form input[type="submit"]:hover:before, form button:hover:before, form input[type="reset"]:hover:before, .button:hover:after, form input[type="submit"]:hover:after, form button:hover:after, form input[type="reset"]:hover:after {
       border-color: white; }
-  .button:before, form input[type="submit"]:before, form button:before, form input[type="reset"]:before {
+  .button:before, form input[type="submit"]:before, form button:before, form input[type="reset"]:before , .button-slice-edge:before{
     border-bottom: 2px solid #f4c545;
     -webkit-transform: rotate(-45deg);
         -ms-transform: rotate(-45deg);
             transform: rotate(-45deg);
     top: -10px;
     left: -10px; }
-  .button:after, form input[type="submit"]:after, form button:after, form input[type="reset"]:after {
+  .button:after, form input[type="submit"]:after, form button:after, form input[type="reset"]:after .button-slice-edge:after {
     border-top: 2px solid #f4c545;
     -webkit-transform: rotate(-45deg);
         -ms-transform: rotate(-45deg);
@@ -307,7 +308,8 @@ form input[type="submit"], form button, form input[type="reset"] {
   margin-bottom: 50px;
   position: relative;
   border: 2px solid #383838;
-  color: #d3d3d3;
+  color: #383838;
+  background-color: #212121;
   text-transform: uppercase; }
   .button-back img {
     margin-right: 10px; }
@@ -331,6 +333,11 @@ form input[type="submit"], form button, form input[type="reset"] {
             transform: rotate(-45deg);
     bottom: -10px;
     right: -10px; }
+.button-back a.current, .button-back a:hover {
+  border-color: #ffff00;
+  color: #b3b3b3; }
+.button-back a.current:before, .button-back a.current:after, .button-back a:hover:before, .button-back a:hover:after {
+  border-color: #ffffff; }
 
 .map {
   min-height: 400px; }
@@ -1330,8 +1337,8 @@ form input[type="submit"], form button, form input[type="reset"] {
     .main-navigation .menu-item:last-child a:after {
       display: none; }
     .main-navigation .menu-item.current-menu-item a, .main-navigation .menu-item:hover a {
-      color: #f4c545;
-      border-bottom: 2px solid #f4c545; }
+      color: #d3d3d3;
+      border-bottom: 2px solid #d3d3d3; }
 
 .mobile-navigation {
   clear: both;
@@ -1617,9 +1624,9 @@ form input[type="submit"], form button, form input[type="reset"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    border: 2px solid #f4c545;
+    border: 2px solid #ffffff;
     padding: 10px 20px;
-    color: #f4c545;
+    color: #ffffff;
     border-radius: 0;
     background: none;
     text-transform: uppercase;
@@ -1663,10 +1670,10 @@ form input[type="submit"], form button, form input[type="reset"] {
       bottom: -10px;
       right: -10px; }
     .filterable-nav a.current, .filterable-nav a:hover {
-      border-color: #f4c545;
-      color: #f4c545; }
+      border-color: #b3b3b3;
+      color: #b3b3b3; }
       .filterable-nav a.current:before, .filterable-nav a.current:after, .filterable-nav a:hover:before, .filterable-nav a:hover:after {
-        border-color: #f4c545; }
+        border-color: #b3b3b3; }
 
 .filterable-items {
   *zoom: 1; }
@@ -1747,8 +1754,9 @@ form input[type="submit"], form button, form input[type="reset"] {
     display: inline-block;
     margin-right: 20px; }
   .site-footer .phone {
-    font-size: 18px;
-    font-size: 1.2857142857em; }
+    font-size: 16px;
+    font-size: 1.2857142857em;
+    color: white }
   .site-footer .colophon {
     padding-top: 30px;
     clear: both; }
