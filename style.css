@@ -1798,3 +1798,39 @@ form input[type="submit"], form button, form input[type="reset"] {
               transform: rotate(-45deg);
       bottom: -5px;
       right: -5px; }
+.form-error{
+    padding: 10px;
+    color: #c55851;
+    background: #FFBABA;
+    border: 1px solid #c55851;
+    margin: 10px 0px;
+
+}
+.form-success{
+    padding: 10px;
+    color: #22903b;
+    background: #b4ffc5;
+    border: 1px solid #269444;
+    margin: 10px 0px;
+}
+.form-info{
+  padding: 10px;
+  color: #447cb3;
+  background: #b9fcff;
+  border: 1px solid #447cb3;
+  margin: 10px 0px;
+
+}
+tr:nth-child(even) {
+  background-color: #2e2649;
+}
+tr:nth-child(odd) {
+  background-color: #423b5b;
+}
+th {
+  background-color: #342F44;
+  color: white;
+}
+.noBorder {
+  border:none !important;
+}
