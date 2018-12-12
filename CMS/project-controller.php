@@ -6,8 +6,8 @@
  * Time: 11:34 AM
  */
 
-require_once ('../CMS/Database.php');
-require_once ('../CMS/Hash.php');
+require_once ('Database.php');
+require_once ('Hash.php');
 
 class ProjectManager {
     private static $_instance,$current_Project;
@@ -71,7 +71,7 @@ class ProjectManager {
         return false;
     }
 
-    function getProjectById($id){
+    function getProject($id){
         $result = $this->database->select('Projects',array('*'),"WHERE Project_id = '{$id}';");
         if(count($result)==1){
             $found_Project = $result[0];

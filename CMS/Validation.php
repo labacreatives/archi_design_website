@@ -1,5 +1,5 @@
 <?php
-require_once ('../CMS/Input.php');
+require_once ('Input.php');
 class Validation{
 	public $passed,$errors=array();
 	private $database;

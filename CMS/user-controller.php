@@ -1,7 +1,7 @@
 <?php
 //include_once ($_SERVER['DOCUMENT_ROOT'].'/e-commerce/inc/init.php');
 include __DIR__.'/Database.php';
-require_once ('../CMS/Hash.php');
+require_once ('Hash.php');
 
 class UserManager {
     private static $_instance,$current_user;
