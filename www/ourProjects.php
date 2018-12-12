@@ -81,9 +81,9 @@ $projects = $project_manager->getProjects();
                                 <?php foreach ($projects  as $project): ?>
                                     <div class="project-item filterable-item shopping-center">
                                         <figure class="featured-image">
-                                            <a href="project-single.html"><img src="images/projects/<?=$project["image_name"]?>" alt="#"></a>
+                                            <a href="viewProject.php"><img src="images/projects/<?=$project["image_name"]?>" alt="#"></a>
                                             <figcaption>
-                                                <h2 class="project-title"><a href="project-single.html"><?=$project["name"]?></a></h2>
+                                                <h2 class="project-title"><a href="viewProject.php"><?=$project["name"]?></a></h2>
                                                 <p><?=$project["description"]?></p>
                                                 <a class="button" href="">More</a>
                                             </figcaption>

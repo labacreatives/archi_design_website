@@ -1,10 +1,10 @@
 <?php
 //include_once ($_SERVER['DOCUMENT_ROOT'].'/e-commerce/inc/init.php');
-require_once ('../CMS/Input.php');
-require_once ('../CMS/project-controller.php');
-require_once('../CMS/Validation.php');
-require_once ('../CMS/project-model.php');
-require_once ('../CMS/Session.php');
+require_once('../../CMS/Input.php');
+require_once('../../CMS/project-controller.php');
+require_once('../../CMS/Validation.php');
+require_once('../../CMS/project-model.php');
+require_once('../../CMS/Session.php');
 
 if(Input::exists("createProject")){
     $validation = new Validation();
@@ -62,14 +62,14 @@ if(Input::exists("createProject")){
 
     <!-- Loading third party fonts -->
     <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|" rel="stylesheet" type="text/css">
-    <link href="../fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../../fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- Loading main css file -->
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../../style.css">
 
     <!--[if lt IE 9]>
-    <script src="../js/ie-support/html5.js"></script>
-    <script src="../js/ie-support/respond.js"></script>
+    <script src="../../js/ie-support/html5.js"></script>
+    <script src="../../js/ie-support/respond.js"></script>
     <![endif]-->
 </head>
 <body>
@@ -77,8 +77,8 @@ if(Input::exists("createProject")){
 <div id="site-content">
     <div class="site-header">
         <div class="container">
-            <a href="index.html" id="branding">
-                <img src="../images/logo.png" alt="" class="logo">
+            <a href="../index.html" id="branding">
+                <img src="../../images/logo.png" alt="" class="logo">
                 <div class="logo-text">
                     <h1 class="site-title">ARCHI DESIGN</h1>
                     <small class="site-description"></small>
@@ -89,10 +89,10 @@ if(Input::exists("createProject")){
             <div class="main-navigation">
                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                 <ul class="menu">
-                    <li class="menu-item"><a href="index.html">Home</a></li>
-                    <li class="menu-item"><a href="ourProjects.php">our Projects</a></li>
-                    <li class="menu-item"><a href="about.html">About</a></li>
-                    <li class="menu-item current-menu-item"><a href="contact.html">Contact</a></li>
+                    <li class="menu-item"><a href="../index.html">Home</a></li>
+                    <li class="menu-item"><a href="../ourProjects.php">our Projects</a></li>
+                    <li class="menu-item"><a href="../about.html">About</a></li>
+                    <li class="menu-item current-menu-item"><a href="../contact.html">Contact</a></li>
                 </ul> <!-- .menu -->
             </div> <!-- .main-navigation -->
 
@@ -134,10 +134,10 @@ if(Input::exists("createProject")){
 
 </div>
 
-<script src="../js/jquery-1.11.1.min.js"></script>
+<script src="../../js/jquery-1.11.1.min.js"></script>
 <script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-<script src="../js/plugins.js"></script>
-<script src="../js/app.js"></script>
+<script src="../../js/plugins.js"></script>
+<script src="../../js/app.js"></script>
 
 </body>
 </html>

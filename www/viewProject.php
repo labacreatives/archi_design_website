@@ -1,3 +1,16 @@
+<?php
+require_once ('../CMS/Input.php');
+require_once ('../CMS/Session.php');
+require_once ('../CMS/project-controller.php');
+
+$project_id = Input::get("project_id",'GET');
+if(!$project_id){
+    $erors = array("Project Not Found");
+}
+$Project_manager = ProjectManager::getInstance();
+$project = $Project_manager->getProject($project_id);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>

@@ -200,9 +200,9 @@ textarea {
   overflow: auto;
   vertical-align: top; }
 
-table {
-  border-collapse: collapse;
-  border-spacing: 0; }
+/*table {*/
+  /*border-collapse: collapse;*/
+  /*border-spacing: 0; }*/
 
 *, *:before, *:after {
   -moz-box-sizing: border-box;
@@ -1819,18 +1819,12 @@ form input[type="submit"], form button, form input[type="reset"] {
   background: #b9fcff;
   border: 1px solid #447cb3;
   margin: 10px 0px;
-
 }
-tr:nth-child(even) {
-  background-color: #2e2649;
+table {
+    width: 100%;
 }
-tr:nth-child(odd) {
-  background-color: #423b5b;
+th, td {
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }
-th {
-  background-color: #342F44;
-  color: white;
-}
-.noBorder {
-  border:none !important;
-}
+table th td { border-left:2px solid #ddd;}

@@ -9,7 +9,7 @@ require_once ('../CMS/Session.php');
 $_POST['email'] = "john1@gmail.com";
 $_POST['password'] = "123456";
 $_POST['signin'] = true;
-$_GET['redirected-from'] = "/Laba_Projects/archi_design_website/www/cms.php";
+$_GET['redirected-from'] = "/Laba_Projects/archi_design_website/www/projects.php";
 if(Input::exists('redirected-from', "GET")){
     $redirectedFrom = Input::get("redirected-from","GET");
 }
@@ -40,7 +40,7 @@ if(Input::exists("signin")){
                 header('Location:'.$redirectedFrom);
             }
             else{
-                header("Location:cms.php");
+                header("Location:projects.php");
             }
         }
         Session::set("signin-errors", "Invalid Credentials");
