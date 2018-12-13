@@ -72,11 +72,9 @@ class ProjectManager {
     }
 
     function getProject($id){
-        $result = $this->database->select('Projects',array('*'),"WHERE Project_id = '{$id}';");
+        $result = $this->database->select('Projects',array('*'),"WHERE id = '{$id}';");
         if(count($result)==1){
-            $found_Project = $result[0];
-            $Project = new Project();
-            return $Project;
+            return $result[0];
         }
         return false;
     }

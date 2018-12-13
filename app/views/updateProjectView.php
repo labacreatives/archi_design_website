@@ -1,6 +1,7 @@
 <?php
 //include_once ($_SERVER['DOCUMENT_ROOT'].'/e-commerce/inc/init.php');
 require_once('../../CMS/Input.php');
+require_once('../../CMS/Session.php');
 require_once('../../CMS/project-controller.php');
 require_once('../../CMS/Validation.php');
 require_once('../../CMS/project-model.php');
@@ -11,35 +12,64 @@ require_once('../../CMS/project-model.php');
 //$_POST['type'] = "Real estate";
 //$_POST['client'] = "AYAT";
 //$_POST['price'] = "1500000";
-//
+//$_GET['id']="1";
+////
 //$_POST['updateProject'] = true;
 if(Input::get("id","GET")){
     $project_id = Input::get("id","GET");
 }
 else{
-    header("Location: ./project_management.php");
+    header("Location: ./project_management.php?message=Select+a+project+first");
 }
+//populate fields with data
+$Project_manager = ProjectManager::getInstance();
+$project = $Project_manager->getProject($project_id);
+
 if(Input::exists("updateProject")){
     $validation = new Validation();
     $data_to_validate  =  array(
-        'name' => array('required'=>true,'min'=>2,'max'=>32,'unique'=>'projects'),
+        'name' => array('required'=>true,'min'=>2,'max'=>32),
         'image'=>array('max_size'=>2097152,'file_type'=>array("jpg","jpeg","png","bmp"))
     );
     $validation->validate($data_to_validate);
     if($validation->passed){
+        if(isset($_FILES["image"])){
+//            print_r("files".$_FILES);
+            //upload image
+            $target_dir = getcwd().'\images\projects\\';
+            $imageFileType = strtolower(pathinfo($_FILES["image"]["name"],PATHINFO_EXTENSION));
+            $image_name = uniqid() .'.'. $imageFileType;
+            $target_file = $target_dir . $image_name;
+            $uploadSuccess = move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
+
+            if(!$uploadSuccess){
+                array_push($validation->errors,"Image Upload Failed");
+                Session::set("form-errors", $validation->errors);
+            }
+        }
+        else{
+            echo "no Image";
+            $image_name = $project["image_name"];
+            $target_file = getcwd().'\images\projects\\'.$image_name;
+        }
+
         $project_manager = ProjectManager::getInstance();
-        $project = new Project(
+        $new_project = new Project(
+            Input::get('name'       ),
             Input::get('description'),
-            Input::get('image_path' ),
+            $target_file,
+            $image_name,
             Input::get('type'       ),
             Input::get('client'     ),
             Input::get('price'      )
         );
-        if($project_manager->updateProject($project)){
-            //Email the user Here for validation purposes
+        $successCreating = $project_manager->updateProject($new_project);
+
+        if($successCreating){
+            Session::set("form-success","Project Updated Successfully");
         }
         else{
-            echo 'FAIL!\n';
+            Session::set("form-errors","Failed to Update Project");
         }
     }
     else {
@@ -102,13 +132,27 @@ if(Input::exists("updateProject")){
                     <div class="col-md-6">
                         <div class="contact-form">
                             <h2 class="section-title">Update Project</h2>
-                            <form method="post" action="#">
-                                <input type="text"  name="name" placeholder="project name ..." required="true"><br>
-                                <input type="text"  name="type" placeholder="project type ..." required="true"><br>
-                                <input type="text"  name="client" placeholder="client ..." required="true"><br>
-                                <input type="text"  name="price" placeholder="price ..." required="true"><br>
+                            <?php $form_errors = Session::get('form-errors')?>
+                            <?php if(is_array($form_errors) && count($form_errors) > 0):?>
+                                <?php foreach (Session::get('form-errors') as $error): ?>
+                                    <div class="form-error"><?=$error?></div>
+                                <?php endforeach;?>
+                            <?php elseif(Session::get('form-success')):?>
+                                <div class="form-success"><?=Session::get('form-success')?></div>
+                            <?php endif;?>
+                            <form method="post" action="#" enctype="multipart/form-data">
+                                <p>Project Name</p>
+                                <input type="text"  name="name" value="<?=$project['name']?>"><br>
+                                <p>Project Type</p>
+                                <input type="text"  name="type" value="<?=$project['type']?>"><br>
+                                <p>Client</p>
+                                <input type="text"  name="client" value="<?=$project['client']?>"><br>
+                                <p>Price</p>
+                                <input type="text"  name="price" value="<?=$project['price']?>"><br>
+                                <p>Image</p>
                                 <input type="file"  name="image"><br>
-                                <textarea name="description" id="" cols="30" rows="10" placeholder="project description ..."></textarea><br>
+                                <p>Description</p>
+                                <textarea name="description" id="" cols="30" rows="10" placeholder="project description ..."><?=$project['description']?></textarea><br>
                                 <input type="submit" name="updateProject" value="update">
                             </form>
                         </div>

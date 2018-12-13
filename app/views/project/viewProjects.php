@@ -13,7 +13,7 @@ require_once ('../CMS/Session.php');
 
 
 if(!Session::exists('user_id'))
-    header("Location:signin.php?redirected-from={$_SERVER['SCRIPT_NAME']}&message=Please+signin+first");
+    header("Location:signinView.php?redirected-from={$_SERVER['SCRIPT_NAME']}&message=Please+signin+first");
 
 $Project_manager = ProjectManager::getInstance();
 $Projects = $Project_manager->getAllProjects();

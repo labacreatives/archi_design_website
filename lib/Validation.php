@@ -60,7 +60,9 @@ class Validation{
                                 }
                                 break;
                             case 'file_type':
-                                $file_type = strtolower(end(explode(".",Input::get($element, 'FILES','name'))));
+                                $str_exploded = explode(".",Input::get($element, 'FILES','name'));
+                                print_r($_FILES);
+                                $file_type = strtolower(end($str_exploded));
                                 if(!in_array($file_type, $value)){
                                     $extentions = '';
                                     foreach ($value as $extention) {

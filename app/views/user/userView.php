@@ -12,7 +12,7 @@ require_once('../../CMS/Session.php');
 
 if(!Session::exists('user_id') || true){
 //    $signinPage = pathinfo($_SERVER['SCRIPT_NAME'])["filename"].".php";
-//    header("Location: ./signin.php");
+//    header("Location: ./signinView.php");
 
 //    header("Location: ".__FILE__."?redirected-from={$signinPage}&message=Please+signin+first");
 }
@@ -58,8 +58,8 @@ $projects = $Project_manager->getProjects();
             <div class="main-navigation">
                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                 <ul class="menu">
-                    <li class="menu-item current-menu-item"><a href="projects.php">Projects</a></li>
-                    <li class="menu-item"><a href="users.php">Users</a></li>
+                    <li class="menu-item"><a href="projects.php">Projects</a></li>
+                    <li class="menu-item current-menu-item"><a href="users.php">Users</a></li>
                 </ul> <!-- .menu -->
             </div> <!-- .main-navigation -->
             <div class="mobile-navigation"></div>
@@ -71,10 +71,10 @@ $projects = $Project_manager->getProjects();
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="section-title">Manage Projects</h2>
+                        <h2 class="section-title">Projects Management</h2>
                         <div class="container">
                             <?php if ($projects && count($projects) > 0): ?>
-                                <table>
+                                <table class="table table-hover table-dark">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -86,21 +86,16 @@ $projects = $Project_manager->getProjects();
                                     </thead>
                                     <tbody>
                                     <?php foreach ($projects as $project):?>
-                                        <a href="">
-                                            <tr scope="row">
-                                                <th><?=$project["id"]?></th>
-                                                <td><?=$project["name"]?></td>
-                                                <td><?=$project["client"]?></td>
-                                                <td><?=$project["price"]?></td>
-                                                <td><?=substr($project["description"],0,30)?>...</td>
-                                                <td><a href="updateProject.php?id=<?=$project["id"]?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                                                <td><a href="removeProject.php?id"><i class="fas fa-trash-alt"></i></a></td>
-                                            </tr>
-                                        </a>
+                                        <tr scope="row">
+                                            <th><?=$project["id"]?></th>
+                                            <td><?=$project["name"]?></td>
+                                            <td><?=$project["client"]?></td>
+                                            <td><?=$project["price"]?></td>
+                                            <td><?=substr($project["description"],0,30)?>...</td>
+                                        </tr>
                                     <?php endforeach;?>
                                     </tbody>
                                 </table>
-
                             <?php else:?>
                                 <h1>No Projects Here!</h1>
                             <?php endif;?>
