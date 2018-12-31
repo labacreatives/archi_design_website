@@ -1,9 +1,7 @@
 <?php
-require_once ('../CMS/Session.php');
-require_once ('../CMS/project-model.php');
-require_once ('../CMS/project-controller.php');
+require_once('..\..\config\init.php');
 
-$project_manager = ProjectManager::getInstance();
+$project_manager = ProjectController::getInstance();
 $projects = $project_manager->getProjects();
 ?>
 
@@ -34,7 +32,7 @@ $projects = $project_manager->getProjects();
 		<div id="site-content">
 			<div class="site-header">
 				<div class="container">
-					<a href="index.html" id="branding">
+					<a href="../index.html" id="branding">
 						<img src="../images/logo.png" alt="" class="logo">
 						<div class="logo-text">
 							<h1 class="site-title">ARCHI DESIGN</h1>
@@ -46,10 +44,10 @@ $projects = $project_manager->getProjects();
 					<div class="main-navigation">
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
-							<li class="menu-item"><a href="index.html">Home</a></li>
+							<li class="menu-item"><a href="../index.html">Home</a></li>
 							<li class="menu-item current-menu-item"><a href="ourProjects.php">Our Projects</a></li>
-							<li class="menu-item"><a href="about.html">About</a></li>
-							<li class="menu-item"><a href="contact.html">Contact</a></li>
+							<li class="menu-item"><a href="../about.html">About</a></li>
+							<li class="menu-item"><a href="../contact.html">Contact</a></li>
 						</ul> <!-- .menu -->
 					</div> <!-- .main-navigation -->
 
@@ -81,9 +79,9 @@ $projects = $project_manager->getProjects();
                                 <?php foreach ($projects  as $project): ?>
                                     <div class="project-item filterable-item shopping-center">
                                         <figure class="featured-image">
-                                            <a href="viewProject.php"><img src="cms/images/projects/<?=$project["image_name"]?>" alt="#"></a>
+                                            <a href="project.php"><img src="cms/images/projects/<?=$project["image_name"]?>" alt="#"></a>
                                             <figcaption>
-                                                <h2 class="project-title"><a href="viewProject.php"><?=$project["name"]?></a></h2>
+                                                <h2 class="project-title"><a href="project.php"><?=$project["name"]?></a></h2>
                                                 <p><?=$project["description"]?></p>
                                                 <a class="button" href="">More</a>
                                             </figcaption>

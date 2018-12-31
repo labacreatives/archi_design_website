@@ -1,11 +1,5 @@
 <?php
-//include_once ($_SERVER['DOCUMENT_ROOT'].'/e-commerce/inc/init.php');
-require_once ('../CMS/Input.php');
-require_once ('../CMS/user-controller.php');
-require_once ('../CMS/Hash.php');
-require_once('../CMS/Validation.php');
-require_once ('../CMS/user-model.php');
-
+require_once('..\..\config\init.php');
 $_POST['name'] = "";
 $_POST['email'] = "john1@gmail.com";
 $_POST['password'] = "123456";
@@ -28,7 +22,7 @@ if(Input::exists("signup")){
         $new_user->setPassword($hashed_password);
         
         if($user_manager->addUser($new_user)){
-            //Email the user Here for validation purposes
+            //Email the users Here for validation purposes
         }
         else{
             echo 'FAIL!\n';

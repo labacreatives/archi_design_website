@@ -6,7 +6,7 @@ class Validation{
 	public function __construct(){
 		$this->passed = false;
 		$this->errors = array();
-		$this->database = Database::getinstance();
+		$this->database = DatabaseController::getinstance();
 	}
     public function validate($data=array()){
             foreach ($data as $element => $ruleset) {

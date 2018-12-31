@@ -1,5 +1,5 @@
 <?php
-class Database {
+class DatabaseController {
     private static $_instance;
     private $pdo,$last_insert_id;
     
@@ -13,7 +13,7 @@ class Database {
     }
     public static function getInstance(){
         if (!isset(self::$_instance)){
-            self::$_instance = new Database();
+            self::$_instance = new DatabaseController();
         }
         return self::$_instance;
     }

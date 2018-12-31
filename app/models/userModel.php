@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * user-model: ADONIAS
+ * users-model: ADONIAS
  * Date: 11/21/2018
  * Time: 11:37 AM
  */

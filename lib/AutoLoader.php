@@ -43,7 +43,7 @@ class Autoloader
      * The top level directory where recursion will begin. Defaults to the current
      * directory.
      */
-    protected static $pathTop = __DIR__;
+    protected static $pathTop = "../".__DIR__;
     /**
      * A placeholder to hold the file iterator so that directory traversal is only
      * performed once.
@@ -52,7 +52,7 @@ class Autoloader
     /**
      * Autoload function for registration with spl_autoload_register
      *
-     * Looks recursively through project directory and loads class files based on
+     * Looks recursively through projects directory and loads class files based on
      * filename match.
      *
      * @param string $className

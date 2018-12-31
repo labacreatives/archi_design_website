@@ -5,19 +5,12 @@
  * Date: 12/3/2018
  * Time: 12:15 PM
  */
-require_once('../../CMS/Input.php');
-require_once('../../CMS/project-controller.php');
-require_once('../../CMS/Validation.php');
-require_once('../../CMS/Session.php');
+require_once('..\..\config\init.php');
 
-if(!Session::exists('user_id') || true){
-//    $signinPage = pathinfo($_SERVER['SCRIPT_NAME'])["filename"].".php";
-//    header("Location: ./signinView.php");
-
-//    header("Location: ".__FILE__."?redirected-from={$signinPage}&message=Please+signin+first");
+if(!Session::exists('user_id')){
+    header("Location: ../users/signin.php?redirected-from=../projects/viewProjects.php&message=Please+signin+first");
 }
-
-$Project_manager = ProjectManager::getInstance();
+$Project_manager = ProjectController::getInstance();
 $projects = $Project_manager->getProjects();
 ?>
 
@@ -32,14 +25,14 @@ $projects = $Project_manager->getProjects();
 
     <!-- Loading third party fonts -->
     <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400|" rel="stylesheet" type="text/css">
-    <link href="../../fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- Loading main css file -->
-    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../stylesheets/style.css">
 
     <!--[if lt IE 9]>
-    <script src="../../js/ie-support/html5.js"></script>
-    <script src="../../js/ie-support/respond.js"></script>
+    <script src="../js/ie-support/html5.js"></script>
+    <script src="../js/ie-support/respond.js"></script>
     <![endif]-->
 </head>
 <body>
@@ -48,7 +41,7 @@ $projects = $Project_manager->getProjects();
     <div class="site-header">
         <div class="container">
             <a href="../index.html" id="branding">
-                <img src="../../images/logo.png" alt="" class="logo">
+                <img src="../images/logo.png" alt="" class="logo">
                 <div class="logo-text">
                     <h1 class="site-title">ARCHI DESIGN</h1>
                     <small class="site-description"></small>
@@ -58,7 +51,7 @@ $projects = $Project_manager->getProjects();
             <div class="main-navigation">
                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                 <ul class="menu">
-                    <li class="menu-item current-menu-item"><a href="projects.php">Projects</a></li>
+                    <li class="menu-item current-menu-item"><a href="viewProjects.php">Projects</a></li>
                     <li class="menu-item"><a href="users.php">Users</a></li>
                 </ul> <!-- .menu -->
             </div> <!-- .main-navigation -->
@@ -94,7 +87,7 @@ $projects = $Project_manager->getProjects();
                                                 <td><?=$project["price"]?></td>
                                                 <td><?=substr($project["description"],0,30)?>...</td>
                                                 <td>
-                                                    <a class="button" href="../updateProjectView.php?id=<?=$project[">Remove</a>
+<!--                                                    <a class="button" href="../updateProjectView.php?id=--><?//=$project[""]?><!--></a>-->
                                                 </td>
                                             </tr>
                                         </a>
@@ -115,10 +108,10 @@ $projects = $Project_manager->getProjects();
 
 </div>
 
-<script src="../../js/jquery-1.11.1.min.js"></script>
+<script src="../js/jquery-1.11.1.min.js"></script>
 <script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-<script src="../../js/plugins.js"></script>
-<script src="../../js/app.js"></script>
+<script src="../js/plugins.js"></script>
+<script src="../js/app.js"></script>
 
 </body>
 </html>

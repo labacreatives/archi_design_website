@@ -1,10 +1,6 @@
 <?php
-//include_once ($_SERVER['DOCUMENT_ROOT'].'/e-commerce/inc/init.php');
-require_once('../../CMS/Input.php');
-require_once('../../CMS/project-controller.php');
-require_once('../../CMS/Validation.php');
-require_once('../../CMS/project-model.php');
-require_once('../../CMS/Session.php');
+
+require_once('..\..\config\init.php');
 
 if(Input::exists("createProject")){
     $validation = new Validation();
@@ -26,7 +22,7 @@ if(Input::exists("createProject")){
             Session::set("form-errors", $validation->errors);
         }
         else{
-            $project_manager = ProjectManager::getInstance();
+            $project_manager = ProjectController::getInstance();
             $new_project = new Project(
                 Input::get('name'       ),
                 Input::get('description'),
@@ -90,7 +86,7 @@ if(Input::exists("createProject")){
                 <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                 <ul class="menu">
                     <li class="menu-item"><a href="../index.html">Home</a></li>
-                    <li class="menu-item"><a href="../ourProjects.php">our Projects</a></li>
+                    <li class="menu-item"><a href="ourProjects.php">our Projects</a></li>
                     <li class="menu-item"><a href="../about.html">About</a></li>
                     <li class="menu-item current-menu-item"><a href="../contact.html">Contact</a></li>
                 </ul> <!-- .menu -->

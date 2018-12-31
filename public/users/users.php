@@ -5,19 +5,16 @@
  * Date: 12/3/2018
  * Time: 12:15 PM
  */
-require_once('../../CMS/Input.php');
-require_once('../../CMS/project-controller.php');
-require_once('../../CMS/Validation.php');
-require_once('../../CMS/Session.php');
+require_once("..\..\config\init.php");
 
 if(!Session::exists('user_id') || true){
 //    $signinPage = pathinfo($_SERVER['SCRIPT_NAME'])["filename"].".php";
-//    header("Location: ./signinView.php");
+//    header("Location: ./signin.php");
 
 //    header("Location: ".__FILE__."?redirected-from={$signinPage}&message=Please+signin+first");
 }
 
-$Project_manager = ProjectManager::getInstance();
+$Project_manager = ProjectController::getInstance();
 $projects = $Project_manager->getProjects();
 ?>
 

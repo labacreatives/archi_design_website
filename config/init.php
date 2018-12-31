@@ -1,36 +1,39 @@
 <?php
 session_start();
-//PAGES
+$ROOT = str_replace("\\","/",dirname(__DIR__,1));
+//Paths
 define('BR','</br>');
-define('HOME_PAGE', '/public/index.html');
-//define('SIGNIN_PAGE', '/e-commerce/merkato-online/signinView.php');
-//define('SIGNUP_PAGE', '/e-commerce/merkato-online/signupView.php');
-//define('LOGOUT_PAGE', '/e-commerce/merkato-online/logout.php');
-//define('SELL_PAGE', '/e-commerce/merkato-online/sellerHome.php');
-//define('ADD_PRODUCT', '/e-commerce/merkato-online/seller/product/addProduct.php');
-//define('UPDATE_PRODUCT', '/e-commerce/merkato-online/seller/account/updateProduct.php');
-//define('VIEW_ORDERS', '/e-commerce/merkato-online/viewOrders.php');
-//define('VIEW_PRODUCTS', '/e-commerce/merkato-online/seller/product/viewProducts.php');
-//define('ACCOUNT', '/e-commerce/merkato-online/seller/account/account.php');
-//define('UPDATE_ACCOUNT', '/e-commerce/merkato-online/seller/account/updateAccount.php');
-//define("SEARCH_RESULTS_PAGE", 'searchResult.php');
-////CSS
-//define('CSS_HOME', '../css/home.css');
-//define('CSS_DIR','/e-commerce/css');
-////JS
-//define("JQUERY", "../js/jquery-1.9.1.min.js");
-//define("JS_HOME", "../js/script.js");
-////IMAGE
-//define("IMAGE_DIR", '/e-commerce/images');
-//define("UPLOAD_IMAGE_DIR", '../../../images');
-
+define('APP_ROOT'       ,$ROOT);
+define('PUBLIC'        ,$ROOT."\public");
+define('HOME_PAGE'      ,$ROOT.'\public\index.html');
+define('SIGNIN_PAGE'    ,$ROOT.'\public\users\signin.php');
+define('SIGNUP_PAGE'    ,$ROOT.'\public\users\signin.php');
+define('LOGOUT_PAGE'    ,$ROOT.'\public\users\signin.php');
+define('ADD_PROJECT'    ,$ROOT.'\public\projects\addProject.php');
+define('VIEW_PROJECT'   ,$ROOT.'\public\projects\viewProject.php');
+define('VIEW_PROJECTS'  ,$ROOT.'\public\projects\viewProjects.php');
+define('UPDATE_PROJECT' ,$ROOT.'\public\projects\updateProject.php');
+define('CSS_DIR'        ,$ROOT.'\e-commerce\css');
+define("JQUERY"         ,$ROOT."\public\js\jquery-1.9.1.min.js");
+define("JS_DIR"         ,$ROOT."\public\js\script.js");
+define("UPLOAD_DIR"     ,$ROOT.'\public\uploads');
 
 
 spl_autoload_register(function($file_name){
-    if(file_exists($_SERVER['DOCUMENT_ROOT']."/e-commerce/app/{$file_name}.php")){
-        require_once_once ($_SERVER['DOCUMENT_ROOT']."/e-commerce/app/{$file_name}.php");
-    } else {
-        echo 'AUTO LOADER FAIL';
+    $inc_dirs = array(
+        "/app/controllers",
+        "/app/models",
+        "/lib",
+        "/public/projects",
+        "/public/user",
+        "/public/contact"
+    );
+    foreach ($inc_dirs as $dir){
+        foreach (scandir(APP_ROOT.$dir) as $file){
+            if($file_name.".php" == $file && file_exists(APP_ROOT.$dir.'/'.$file)){
+                require_once (APP_ROOT.$dir.'/'.$file);
+                break 2;
+            }
+        }
     }
-    
 });

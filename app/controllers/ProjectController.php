@@ -5,21 +5,19 @@
  * Date: 11/22/2018
  * Time: 11:34 AM
  */
+require_once('..\..\config\init.php');
 
-require_once ('Database.php');
-require_once ('Hash.php');
-
-class ProjectManager {
+class ProjectController {
     private static $_instance,$current_Project;
     private $database;
 
     private function __construct() {
-        $this->database = Database::getInstance();
+        $this->database = DatabaseController::getInstance();
     }
 
     static function getInstance(){
         if (!isset(self::$_instance)){
-            self::$_instance = new ProjectManager();
+            self::$_instance = new ProjectController();
         }
         return self::$_instance;
     }

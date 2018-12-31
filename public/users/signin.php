@@ -1,22 +1,17 @@
 <?php
-//include_once ($_SERVER['DOCUMENT_ROOT'].'/e-commerce/inc/init.php');
-require_once ('../CMS/Input.php');
-require_once ('../CMS/user-controller.php');
-require_once ('../CMS/Validation.php');
-require_once ('../CMS/user-model.php');
-require_once ('../CMS/Session.php');
+require_once('..\..\config\init.php');
 
-$_POST['email'] = "john1@gmail.com";
-$_POST['password'] = "123456";
-$_POST['signin'] = true;
-$_GET['redirected-from'] = "/Laba_Projects/archi_design_website/www/projects.php";
+//$_POST['email'] = "john1@gmail.com";
+//$_POST['password'] = "123456";
+//$_POST['signin'] = true;
+//$_GET['redirected-from'] = "/Laba_Projects/archi_design_website/www/viewProjects.php";
 if(Input::exists('redirected-from', "GET")){
     $redirectedFrom = Input::get("redirected-from","GET");
 }
 if(Input::exists('message', "GET")){
     $redirectMessage = Input::get("message","GET");
 }
-echo $redirectedFrom;
+
 
 if(Input::exists("signin")){
     unset($redirectMessage);
@@ -40,7 +35,7 @@ if(Input::exists("signin")){
                 header('Location:'.$redirectedFrom);
             }
             else{
-                header("Location:projects.php");
+                header("Location:viewProjects.php");
             }
         }
         Session::set("signin-errors", "Invalid Credentials");
@@ -68,7 +63,7 @@ if(Input::exists("signin")){
     <link href="../fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- Loading main css file -->
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../stylesheets/style.css">
 
     <!--[if lt IE 9]>
     <script src="../js/ie-support/html5.js"></script>
@@ -125,7 +120,6 @@ if(Input::exists("signin")){
 </div>
 
 <script src="../js/jquery-1.11.1.min.js"></script>
-<script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
 <script src="../js/plugins.js"></script>
 <script src="../js/app.js"></script>
 

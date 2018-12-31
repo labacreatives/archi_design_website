@@ -1,14 +1,13 @@
 <?php
-//include_once ($_SERVER['DOCUMENT_ROOT'].'/e-commerce/inc/init.php');
-include __DIR__.'/Database.php';
-require_once ('Hash.php');
+
+require_once('..\..\config\init.php');
 
 class UserManager {
     private static $_instance,$current_user;
     private $database;
    
     private function __construct() {
-        $this->database = Database::getInstance();
+        $this->database = DatabaseController::getInstance();
     }
     private function userExists($column,$value){
         $result = $this->database->select('users',array($column),"WHERE {$column}='{$value}';");
